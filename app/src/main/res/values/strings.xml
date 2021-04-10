@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Fintonic Beers</string>
+    <string name="app_name">Fintonic Challenge</string>
+
+    <string name="description_img_photo">Imagen de cerveza</string>
 </resources>
