@@ -57,7 +57,7 @@ class MainAdapter(
 
         with(holder) {
             binding.root.setOnClickListener {
-                listener.onItemClickListener(beer)
+                listener.onItemClickListener(beer.id)
             }
 
             binding.tvName.text = beer.name ?: ""
@@ -95,6 +95,6 @@ class MainAdapter(
         /**
          * Method to response on click item
          */
-        fun onItemClickListener(item: BeerUIModel)
+        fun onItemClickListener(id: Int)
     }
 }

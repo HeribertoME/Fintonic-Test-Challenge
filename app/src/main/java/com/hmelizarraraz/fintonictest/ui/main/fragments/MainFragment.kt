@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hmelizarraraz.fintonictest.data.models.presentation.BeerUIModel
 import com.hmelizarraraz.fintonictest.databinding.FragmentMainBinding
@@ -28,6 +28,7 @@ class MainFragment : Fragment(), MainAdapter.MainOnClickListener {
         BeerUIModel(0, "Corona", imageUrl = "https://kaikucaffelatte.com/blog/wp-content/uploads/2020/03/shutterstock_510679489-scaled.jpg"), BeerUIModel(1, "Tecate", imageUrl = "https://images.punkapi.com/v2/227.png"),
         BeerUIModel(1, "Sol")
     )
+
     /**
      * onCreateView
      *
@@ -68,8 +69,8 @@ class MainFragment : Fragment(), MainAdapter.MainOnClickListener {
     /**
      * Method to response on click item
      */
-    override fun onItemClickListener(item: BeerUIModel) {
-        Toast.makeText(context, "Item = $item", Toast.LENGTH_LONG).show()
+    override fun onItemClickListener(id: Int) {
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(id))
     }
 
     /**
