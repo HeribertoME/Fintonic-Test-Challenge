@@ -61,7 +61,7 @@ class MainAdapter(
             }
 
             binding.tvName.text = beer.name ?: ""
-            binding.cbFavorite.isChecked = beer.isFavorite
+            //binding.cbFavorite.isChecked = beer.isFavorite
 
             val url = beer.imageUrl ?: ""
 

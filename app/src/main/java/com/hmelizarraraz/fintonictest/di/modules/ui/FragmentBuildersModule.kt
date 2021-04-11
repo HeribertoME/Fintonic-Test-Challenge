@@ -24,7 +24,7 @@ abstract class FragmentBuildersModule {
      *
      * @return DetailFragment
      */
-    //@ContributesAndroidInjector
-    //abstract fun buildDetailFragment(): DetailFragment
+    @ContributesAndroidInjector
+    abstract fun buildDetailFragment(): DetailFragment
 
 }

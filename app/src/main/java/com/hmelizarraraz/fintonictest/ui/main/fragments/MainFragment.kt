@@ -14,7 +14,7 @@ import com.hmelizarraraz.fintonictest.ui.main.contract.MainContracts
 import javax.inject.Inject
 
 /**
- * Main fragment to show view
+ * Main fragment to show view for beer list
  */
 class MainFragment : BaseFragment(), MainAdapter.MainOnClickListener, MainContracts.IMainView {
 
@@ -88,16 +88,12 @@ class MainFragment : BaseFragment(), MainAdapter.MainOnClickListener, MainContra
         findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(id))
     }
 
+    /**
+     * onPause
+     */
     override fun onPause() {
         super.onPause()
         mPresenter.unSubscribe()
-    }
-
-    /**
-     * onDestroyView
-     */
-    override fun onDestroyView() {
-        super.onDestroyView()
     }
 
 }
