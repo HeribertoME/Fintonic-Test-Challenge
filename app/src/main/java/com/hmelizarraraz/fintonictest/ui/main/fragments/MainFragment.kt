@@ -4,30 +4,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hmelizarraraz.fintonictest.data.models.presentation.BeerUIModel
 import com.hmelizarraraz.fintonictest.databinding.FragmentMainBinding
+import com.hmelizarraraz.fintonictest.ui.commons.BaseFragment
 import com.hmelizarraraz.fintonictest.ui.main.adapter.MainAdapter
+import com.hmelizarraraz.fintonictest.ui.main.contract.MainContracts
+import javax.inject.Inject
 
 /**
  * Main fragment to show view
  */
-class MainFragment : Fragment(), MainAdapter.MainOnClickListener {
+class MainFragment : BaseFragment(), MainAdapter.MainOnClickListener, MainContracts.IMainView {
 
+    /**
+     * Presenter instance
+     */
+    @Inject
+    lateinit var mPresenter: MainContracts.IMainPresenter
     /**
      * View binding
      */
     private lateinit var mBinding: FragmentMainBinding
-
     /**
      * Beer list
      */
-    private val mBeerList = mutableListOf(
-        BeerUIModel(0, "Corona", imageUrl = "https://kaikucaffelatte.com/blog/wp-content/uploads/2020/03/shutterstock_510679489-scaled.jpg"), BeerUIModel(1, "Tecate", imageUrl = "https://images.punkapi.com/v2/227.png"),
-        BeerUIModel(1, "Sol")
-    )
+    private val mBeerList = mutableListOf<BeerUIModel>()
 
     /**
      * onCreateView
@@ -63,7 +66,19 @@ class MainFragment : Fragment(), MainAdapter.MainOnClickListener {
             layoutManager = gridLayoutManager
             adapter = mainAdapter
         }
+        mPresenter.setView(this)
+        mPresenter.getBeerList()
+    }
 
+    /**
+     * Method to update data
+     *
+     * @param data beer ui model
+     */
+    override fun updateData(data: MutableList<BeerUIModel>) {
+        mBeerList.clear()
+        mBeerList.addAll(data)
+        mBinding.rvBeers.adapter?.notifyDataSetChanged()
     }
 
     /**
@@ -71,6 +86,11 @@ class MainFragment : Fragment(), MainAdapter.MainOnClickListener {
      */
     override fun onItemClickListener(id: Int) {
         findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(id))
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mPresenter.unSubscribe()
     }
 
     /**
