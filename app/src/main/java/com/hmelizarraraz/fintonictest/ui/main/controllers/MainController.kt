@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.hmelizarraraz.fintonictest.R
 import com.hmelizarraraz.fintonictest.data.models.AppError
 import com.hmelizarraraz.fintonictest.databinding.ActivityMainBinding
 import com.hmelizarraraz.fintonictest.ui.app.IConfigView

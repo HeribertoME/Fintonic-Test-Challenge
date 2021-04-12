@@ -1,6 +1,6 @@
 package com.hmelizarraraz.fintonictest.data.repositories
 
-import com.hmelizarraraz.fintonictest.data.models.BeerModelItem
+import com.hmelizarraraz.fintonictest.data.models.beer.BeerModelItem
 import io.reactivex.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Query

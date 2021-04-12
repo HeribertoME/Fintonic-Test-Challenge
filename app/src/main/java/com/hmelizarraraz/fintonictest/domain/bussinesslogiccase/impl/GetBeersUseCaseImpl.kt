@@ -69,10 +69,10 @@ class GetBeersUseCaseImpl @Inject constructor(
 
                             val beerEntity = BeerEntity(
                                 beer.id,
-                                beer.name,
+                                beer.name ?: "",
                                 false,
                                 imageUrl,
-                                beer.description)
+                                beer.description ?: "")
 
                             beerList.add(beerEntity)
                         }

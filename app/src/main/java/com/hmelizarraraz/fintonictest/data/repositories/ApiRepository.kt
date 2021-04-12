@@ -1,6 +1,6 @@
 package com.hmelizarraraz.fintonictest.data.repositories
 
-import com.hmelizarraraz.fintonictest.data.models.BeerModelItem
+import com.hmelizarraraz.fintonictest.data.models.beer.BeerModelItem
 import io.reactivex.Flowable
 
 /**
