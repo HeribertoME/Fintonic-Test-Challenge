@@ -92,4 +92,18 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+
+    <string name="calendar_day_title_sunday">Domingo</string>
+    <string name="calendar_day_title_monday">Lunes</string>
+    <string name="calendar_day_title_tuesday">Martes</string>
+    <string name="calendar_day_title_wednesday">Miercoles</string>
+    <string name="calendar_day_title_thursday">Jueves</string>
+    <string name="calendar_day_title_friday">Viernes</string>
+    <string name="calendar_day_title_saturday">Sabado</string>
+    <string name="travel_date_filter_subtitle">Subtitle</string>
+    <string name="calendar_header">Header %1$s, %2$s</string>
+
+    <string name="home_open_file_error">No hay aplicaciones disponibles para ver el documento PDF</string>
+    <string name="error_message_apperrorenum_document_error">Error al descargar el archivo</string>
+
 </resources>

@@ -19,4 +19,9 @@
 
     <color name="background_card">#607D8B</color>
 
+    <color name="pinkish_grey">#E7DADA</color>
+    <color name="light_gray">#d3d3d3</color>
+    <color name="teal">#007B81</color>
+
+
 </resources>
