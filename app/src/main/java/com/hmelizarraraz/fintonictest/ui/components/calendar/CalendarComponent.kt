@@ -12,10 +12,10 @@ import android.widget.TextView
 //import com.bancomer.bbva.wibe.data.models.enums.MonthEnum
 //import com.bancomer.bbva.wibe.ui.utils.extentions.*
 import com.hmelizarraraz.fintonictest.R
+import com.hmelizarraraz.fintonictest.data.models.enums.MonthEnum
 import com.hmelizarraraz.fintonictest.databinding.ComponentWibeCalendarBinding
 import com.hmelizarraraz.fintonictest.ui.utils.Constants
-import com.hmelizarraraz.fintonictest.ui.utils.extentions.addFont
-import com.hmelizarraraz.fintonictest.ui.utils.extentions.string
+import com.hmelizarraraz.fintonictest.ui.utils.extentions.*
 import java.util.*
 
 
@@ -26,14 +26,14 @@ import java.util.*
  * @param attrs param to add new attributes
  * @param defStyleAttr param to change style of edit text
  */
-class WibeCalendarComponent @JvmOverloads constructor(
+class CalendarComponent @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     /**
      * Component view instance
      */
-    private val mBinding = ComponentWibeCalendarBinding.inflate(LayoutInflater.from(context), this, true)
+    private lateinit var mBinding: ComponentWibeCalendarBinding
     /**
      * Day list of month selected
      */
@@ -45,7 +45,7 @@ class WibeCalendarComponent @JvmOverloads constructor(
     /**
      * Custom min date
      */
-    private var minDate: Calendar? = null
+    private var minDate: Calendar? = getCalendarDefault()
     /**
      * Custom max date
      */
@@ -62,6 +62,10 @@ class WibeCalendarComponent @JvmOverloads constructor(
      * Display metrics instance
      */
     private val displayMetrics = DisplayMetrics()
+
+    init {
+        mBinding = ComponentWibeCalendarBinding.inflate(LayoutInflater.from(context), this, true)
+    }
 
     /**
      * Method to set min date
@@ -124,8 +128,6 @@ class WibeCalendarComponent @JvmOverloads constructor(
             R.string.calendar_header,
             MonthEnum.getMonthByIndex(calendar.month()).toUpperCase(), calendar.year().toString()
         )
-            .addFont(context, Constants.FONT_BOLD)
-
         clear()
         fillCalendar(calendar)
         mBinding.ibBackMonth.isEnabled = CalendarUtils.validateMinMonth(calendar.time, minDate)
@@ -346,6 +348,10 @@ class WibeCalendarComponent @JvmOverloads constructor(
     private fun clear() {
         days.clear()
         mBinding.llDays.removeAllViews()
+    }
+
+    private fun getCalendarDefault(): Calendar {
+        return Calendar.getInstance()
     }
 
 }

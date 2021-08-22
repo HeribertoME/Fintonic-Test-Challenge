@@ -3,6 +3,8 @@ package com.hmelizarraraz.fintonictest.ui.components.calendar
 import android.content.Context
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.hmelizarraraz.fintonictest.data.models.enums.MonthEnum
+import com.hmelizarraraz.fintonictest.ui.utils.extentions.*
 //import com.bancomer.bbva.wibe.data.models.enums.MonthEnum
 //import com.bancomer.bbva.wibe.ui.utils.extentions.*
 import java.util.*
@@ -71,7 +73,6 @@ object CalendarUtils {
      */
     fun getMonthYearFromString(calendarHeaderLabel: String, delimiter: String = " "): List<Int> {
         val dateArray = calendarHeaderLabel.split(delimiter)
-        return emptyList()
         return arrayListOf(MonthEnum.getIndexByMonth(dateArray[0]), dateArray[1].toInt())
     }
 
@@ -109,8 +110,8 @@ object CalendarUtils {
         }
     }
 
-     fun addNextYear(date: Date): Calendar {
-        val calendar = getCalendar(date)
+    fun addNextYear(date: Date): Calendar {
+        val calendar = CalendarUtils.getCalendar(date)
         calendar.add(Calendar.YEAR, 1)
         return calendar
     }
@@ -143,7 +144,6 @@ object CalendarUtils {
      * @return boolean
      */
     fun validateMinDay(day: Int, currentDate: Calendar, minDate: Calendar): Boolean {
-        return false
         return if (currentDate.compareMonthAndYear(minDate)) {
             day >= minDate[Calendar.DAY_OF_MONTH]
         } else {
@@ -161,7 +161,6 @@ object CalendarUtils {
      * @return boolean
      */
     fun validateMaxDay(day: Int, currentDate: Calendar, maxDate: Calendar): Boolean {
-        return false
         return if (currentDate.compareMonthAndYear(maxDate)) {
             day <= maxDate[Calendar.DAY_OF_MONTH]
         } else {

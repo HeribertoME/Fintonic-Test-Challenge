@@ -1,6 +1,10 @@
 package com.hmelizarraraz.fintonictest.ui.components.calendar
 
 //import com.bancomer.bbva.wibe.ui.utils.extentions.*
+import com.hmelizarraraz.fintonictest.ui.utils.extentions.compareMonth
+import com.hmelizarraraz.fintonictest.ui.utils.extentions.compareMonthAndYear
+import com.hmelizarraraz.fintonictest.ui.utils.extentions.day
+import com.hmelizarraraz.fintonictest.ui.utils.extentions.month
 import java.util.*
 
 /**

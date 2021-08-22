@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hmelizarraraz.fintonictest.data.models.presentation.BeerUIModel
@@ -11,6 +12,8 @@ import com.hmelizarraraz.fintonictest.databinding.FragmentMainBinding
 import com.hmelizarraraz.fintonictest.ui.commons.BaseFragment
 import com.hmelizarraraz.fintonictest.ui.main.adapter.MainAdapter
 import com.hmelizarraraz.fintonictest.ui.main.contract.MainContracts
+import timber.log.Timber
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -68,6 +71,14 @@ class MainFragment : BaseFragment(), MainAdapter.MainOnClickListener, MainContra
         }
         mPresenter.setView(this)
         mPresenter.getBeerList()
+        mBinding.calendar
+            .init()
+
+        mBinding.calendar.setDaySelectedListener {
+            Toast.makeText(requireContext(), "Day = $it", Toast.LENGTH_SHORT).show()
+            val dates = mBinding.calendar.getSelectedDates()
+            Timber.d(dates.toString())
+        }
     }
 
     /**

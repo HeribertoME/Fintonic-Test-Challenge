@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvSubTitle"
         tools:text="11 Ago. --- 15 Ago." />
 
-    <com.hmelizarraraz.fintonictest.ui.components.calendar.WibeCalendarComponent
+    <com.hmelizarraraz.fintonictest.ui.components.calendar.CalendarComponent
         android:id="@+id/wcSxkm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
